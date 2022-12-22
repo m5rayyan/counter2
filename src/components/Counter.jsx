@@ -2,20 +2,15 @@ import React, { Component } from "react";
 
 export default class Counter extends Component {
   render() {
+    const { counter, onDecrement, onIncrement } = this.props;
     return (
       <div className="counter">
-        <div className="value">{this.props.counter.count}</div>
+        <div className="value">{counter.count}</div>
 
-        <button
-          className="decrement"
-          onClick={() => this.props.onDecrement(this.props.counter)}
-        >
+        <button className="decrement" onClick={() => onDecrement(counter)}>
           -
         </button>
-        <button
-          className="increment"
-          onClick={() => this.props.onIncrement(this.props.counter)}
-        >
+        <button className="increment" onClick={() => onIncrement(counter)}>
           +
         </button>
       </div>

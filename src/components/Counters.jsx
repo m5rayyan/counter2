@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Counter from "../components/Counter";
-// import Total from "./Total";
+import Total from "./Total";
 
 export default class Counters extends Component {
   state = {
     counters: [
       { id: 1, count: 0, steps: 1 },
       { id: 2, count: 0, steps: 2 },
-      { id: 3, count: 0, steps: 3 },
-      { id: 4, count: 0, steps: 4 },
+      { id: 3, count: 0, steps: 4 },
+      { id: 4, count: 0, steps: 9 },
     ],
   };
 
@@ -29,7 +29,11 @@ export default class Counters extends Component {
       this.setState({ counters });
     }
   };
-
+  calcTotal = () => {
+    return this.state.counters.reduce(function (acc, obj) {
+      return acc + obj.count;
+    }, 0);
+  };
   render() {
     return (
       <div>
@@ -41,6 +45,7 @@ export default class Counters extends Component {
             onDecrement={this.onDecrement}
           />
         ))}
+        <Total value={this.calcTotal()} />
       </div>
     );
   }
